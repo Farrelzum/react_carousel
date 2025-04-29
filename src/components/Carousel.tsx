@@ -83,16 +83,19 @@ const Carousel: React.FC<Props> = ({
         <button
           type="button"
           onClick={handlePrevButton}
-          className={`Carousel__button ${currentIndex === 0 ? 'Caroules__button--disabled' : ''}`}
+          className={`Carousel__button ${
+            !infinite && currentIndex === 0 ? 'Carousel__button--disabled' : ''
+          }`}
         >
           &#8592;
         </button>
+
         <button
           type="button"
           onClick={handleNextButton}
           className={`Carousel__button ${
-            currentIndex >= totalImages - frameSize
-              ? 'Caroules__button--disabled'
+            !infinite && currentIndex >= totalImages - frameSize
+              ? 'Carousel__button--disabled'
               : ''
           }`}
           data-cy="next"
